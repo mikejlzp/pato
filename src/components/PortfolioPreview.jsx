@@ -27,7 +27,7 @@ const PortfolioPreview = () => {
 
   return (
     <>
-      <section id="portfolio" className="py-32 px-6 lg:px-12">
+      <section id="portfolio" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             ref={ref}
