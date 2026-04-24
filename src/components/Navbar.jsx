@@ -17,6 +17,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Inicio', href: '#hero' },
     { name: 'Sobre mí', href: '#about' },
+    { name: 'Trayectoria', href: '#resume' },
     { name: 'Trabajos', href: '#portfolio' },
     { name: 'Habilidades', href: '#skills' },
     { name: 'Contacto', href: '#contact' },

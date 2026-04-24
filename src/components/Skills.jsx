@@ -33,7 +33,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-32 px-6 lg:px-12 bg-gray-50">
+    <section id="skills" className="py-24 px-6 lg:px-12 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}

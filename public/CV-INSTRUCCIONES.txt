@@ -1,0 +1,7 @@
+INSTRUCCIONES PARA AGREGAR TU CV:
+
+1. Coloca tu archivo CV en formato PDF en esta carpeta (public/)
+2. Renómbralo a: cv.pdf
+3. El botón "Descargar CV" en la sección Trayectoria funcionará automáticamente
+
+Nota: Este archivo de texto es solo una guía. Puedes eliminarlo después de agregar tu CV.

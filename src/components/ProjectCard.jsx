@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onClick }) => {
   return (
     <motion.article
       layout
@@ -9,20 +8,22 @@ const ProjectCard = ({ project }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
+      whileHover={{ y: -8 }}
       className="group cursor-pointer"
+      onClick={() => onClick(project)}
     >
-      <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="relative overflow-hidden mb-4 aspect-[4/3]">
-          <img
+      <div className="block">
+        <div className="relative overflow-hidden mb-4 aspect-[4/3] bg-gray-100">
+          <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.6 }}
           />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-            <ExternalLink 
-              className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-              size={32} 
-            />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="text-sm font-medium">Ver detalles →</p>
           </div>
         </div>
         
@@ -33,11 +34,11 @@ const ProjectCard = ({ project }) => {
           <h3 className="font-serif text-xl font-semibold group-hover:text-gray-600 transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-gray-600 line-clamp-2">
+          <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">
             {project.description}
           </p>
         </div>
-      </a>
+      </div>
     </motion.article>
   )
 }
