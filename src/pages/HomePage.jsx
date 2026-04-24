@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Resume from '../components/Resume'
 import PortfolioPreview from '../components/PortfolioPreview'
+import Videos from '../components/Videos'
 import Skills from '../components/Skills'
 import Contact from '../components/Contact'
 
@@ -18,6 +19,7 @@ const HomePage = () => {
       <About />
       <Resume />
       <PortfolioPreview />
+      <Videos />
       <Skills />
       <Contact />
     </>

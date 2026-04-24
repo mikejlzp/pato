@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 const Navbar = () => {
@@ -21,7 +21,8 @@ const Navbar = () => {
     setIsOpen(false)
   }, [location])
 
-  const navItems = [
+  // Items que hacen scroll a secciones internas
+  const scrollItems = [
     { name: 'Inicio', href: '#hero' },
     { name: 'Sobre mí', href: '#about' },
     { name: 'Trayectoria', href: '#resume' },
@@ -30,10 +31,10 @@ const Navbar = () => {
     { name: 'Contacto', href: '#contact' },
   ]
 
-  const handleNavClick = (e, href) => {
+  const handleScrollClick = (e, href) => {
     e.preventDefault()
     setIsOpen(false)
-    
+
     // Si estamos en otra página, navegar a home primero
     if (location.pathname !== '/') {
       navigate('/')
@@ -42,7 +43,7 @@ const Navbar = () => {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
         }
-      }, 100)
+      }, 150)
     } else {
       const element = document.querySelector(href)
       if (element) {
@@ -53,31 +54,40 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-[100] transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
-      }`}>
+      <nav
+        className={`fixed w-full z-[100] transition-all duration-300 ${
+          scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-center h-20">
-            <a 
-              href="#hero" 
-              onClick={(e) => handleNavClick(e, '#hero')}
+            <a
+              href="#hero"
+              onClick={(e) => handleScrollClick(e, '#hero')}
               className="font-serif text-xl md:text-2xl font-bold z-10"
             >
               [Tu Nombre]
             </a>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              {navItems.map((item) => (
+            <div className="hidden md:flex space-x-8 items-center">
+              {scrollItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
+                  onClick={(e) => handleScrollClick(e, item.href)}
                   className="text-sm font-medium hover:text-gray-600 transition-colors"
                 >
                   {item.name}
                 </a>
               ))}
+              {/* Videos — link a página separada */}
+              <Link
+                to="/videos"
+                className="text-sm font-medium hover:text-gray-600 transition-colors"
+              >
+                Videos
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -93,22 +103,30 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div 
+        <div
           className={`md:hidden bg-white border-t shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
             isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="px-6 py-4 space-y-3">
-            {navItems.map((item) => (
+            {scrollItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
+                onClick={(e) => handleScrollClick(e, item.href)}
                 className="block text-base font-medium hover:text-gray-600 hover:bg-gray-50 transition-colors py-3 px-2 rounded"
               >
                 {item.name}
               </a>
             ))}
+            {/* Videos — link a página separada */}
+            <Link
+              to="/videos"
+              onClick={() => setIsOpen(false)}
+              className="block text-base font-medium hover:text-gray-600 hover:bg-gray-50 transition-colors py-3 px-2 rounded"
+            >
+              Videos
+            </Link>
           </div>
         </div>
       </nav>

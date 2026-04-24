@@ -55,7 +55,7 @@ export const allProjects = [
     category: 'Comunicación para el Cambio',
     description: 'Acompañamiento a 8 asociaciones con más de 150 apicultores que encontraron en la miel una oportunidad frente a la violencia y minería ilegal.',
     image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80',
-    featured: false
+    featured: true
   },
   {
     id: 8,
@@ -103,7 +103,7 @@ export const allProjects = [
     category: 'Comunicación para el Cambio',
     description: 'Visibilización de 646,472 víctimas del conflicto armado. Estrategias para la recuperación de proyectos de vida y garantías de no repetición.',
     image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80',
-    featured: false
+    featured: true
   },
   {
     id: 14,
@@ -128,7 +128,7 @@ export const allProjects = [
     category: 'Comunicación y Educación',
     description: 'Cátedra de Paz: propuesta pedagógica para vincular a jóvenes en la construcción de convivencia, inclusión y cultura de la legalidad.',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80',
-    featured: false
+    featured: true
   },
   {
     id: 17,

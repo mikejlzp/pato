@@ -26,27 +26,28 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200]"
           />
           
           {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[201] flex items-center justify-center p-4 md:p-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-white max-w-3xl w-full max-h-[90vh] overflow-y-auto relative"
+              className="bg-white max-w-4xl w-full max-h-[85vh] overflow-y-auto relative rounded-lg shadow-2xl"
             >
-              {/* Botón cerrar */}
+              {/* Botón cerrar - Posicionado absolute dentro del modal */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-white/90 hover:bg-gray-100 transition-colors z-10"
+                className="absolute top-4 right-4 p-2 bg-white rounded-full hover:bg-gray-100 transition-colors shadow-md z-10"
+                aria-label="Cerrar modal"
               >
                 <X size={24} />
               </button>
 
               {/* Imagen */}
-              <div className="relative h-64 md:h-96 overflow-hidden">
+              <div className="relative w-full bg-gray-50 h-64 md:h-80 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -55,12 +56,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               </div>
 
               {/* Contenido */}
-              <div className="p-8">
+              <div className="p-6 md:p-8 lg:p-12">
                 <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">
                   {project.category}
                 </p>
                 
-                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
                   {project.title}
                 </h2>
                 
@@ -92,7 +93,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 <div className="mt-8 pt-6 border-t border-gray-200">
                   <button
                     onClick={onClose}
-                    className="w-full px-8 py-4 bg-gray-900 text-white text-sm uppercase tracking-wider hover:bg-gray-800 transition-colors"
+                    className="w-full px-8 py-4 bg-gray-900 text-white text-sm uppercase tracking-wider hover:bg-gray-800 transition-colors rounded"
                   >
                     Cerrar
                   </button>

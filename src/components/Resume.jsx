@@ -53,7 +53,7 @@ const Resume = () => {
   ]
 
   return (
-    <section id="resume" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-white">
+    <section id="resume" className="py-12 md:py-20 px-4 md:px-6 lg:px-12 bg-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}

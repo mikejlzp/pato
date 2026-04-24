@@ -1,0 +1,139 @@
+═══════════════════════════════════════════════════════════════
+  CÓMO AGREGAR TUS VIDEOS AL PORTAFOLIO
+═══════════════════════════════════════════════════════════════
+
+📍 ARCHIVO A EDITAR: src/components/Videos.jsx
+
+═══════════════════════════════════════════════════════════════
+  PASO 1: OBTENER LA URL DE EMBED
+═══════════════════════════════════════════════════════════════
+
+🎬 PARA YOUTUBE (Videos Horizontales):
+   1. Ve a tu video en YouTube
+   2. Click en "Compartir" → "Insertar"
+   3. Copia la URL del iframe (ejemplo: https://www.youtube.com/embed/ABC123)
+   4. Usa esa URL en el campo "videoUrl"
+
+📱 PARA YOUTUBE SHORTS (Videos Verticales):
+   1. Abre tu Short en YouTube
+   2. Click en "Compartir" → "Insertar"
+   3. Usa la misma URL de embed (funciona igual)
+   4. Marca orientation: 'vertical'
+
+📱 PARA TIKTOK (Videos Verticales):
+   1. Abre tu video en TikTok
+   2. Click en "Compartir" → "Insertar"
+   3. Copia el código embed
+   4. Extrae la URL (ejemplo: https://www.tiktok.com/embed/v2/7123456789)
+
+📱 PARA INSTAGRAM REELS (Videos Verticales):
+   1. Abre tu Reel en Instagram
+   2. Click en los 3 puntos → "Insertar"
+   3. Usa: https://www.instagram.com/reel/CODIGO_DEL_REEL/embed
+
+🎥 PARA VIMEO:
+   1. Ve a tu video en Vimeo
+   2. Click en "Compartir" → "Insertar"
+   3. Copia la URL (ejemplo: https://player.vimeo.com/video/123456)
+
+═══════════════════════════════════════════════════════════════
+  PASO 2: EDITAR EL ARCHIVO Videos.jsx
+═══════════════════════════════════════════════════════════════
+
+Abre: src/components/Videos.jsx
+
+Busca el array "videos" y edita cada objeto:
+
+EJEMPLO DE VIDEO HORIZONTAL (YouTube):
+{
+  id: 1,
+  title: 'Mi Reportaje sobre Cambio Climático',
+  description: 'Investigación sobre el impacto ambiental en Colombia',
+  thumbnail: 'URL_DE_TU_MINIATURA', // Opcional: puedes usar una captura
+  videoUrl: 'https://www.youtube.com/embed/TU_VIDEO_ID',
+  category: 'Reportajes',
+  orientation: 'horizontal'
+}
+
+EJEMPLO DE VIDEO VERTICAL (TikTok/Shorts):
+{
+  id: 4,
+  title: 'Entrevista Rápida con Activista',
+  description: 'Conversación sobre derechos humanos',
+  thumbnail: 'URL_DE_TU_MINIATURA',
+  videoUrl: 'https://www.tiktok.com/embed/v2/TU_VIDEO_ID',
+  category: 'Redes Sociales',
+  orientation: 'vertical'
+}
+
+═══════════════════════════════════════════════════════════════
+  CATEGORÍAS DISPONIBLES
+═══════════════════════════════════════════════════════════════
+
+- Reportajes
+- Entrevistas
+- Documentales
+- Coberturas
+- Podcast
+- Redes Sociales
+
+Puedes crear las categorías que necesites!
+
+═══════════════════════════════════════════════════════════════
+  ORIENTACIONES
+═══════════════════════════════════════════════════════════════
+
+orientation: 'horizontal' → Videos de YouTube normales (16:9)
+orientation: 'vertical'   → TikTok, Reels, Shorts (9:16)
+
+═══════════════════════════════════════════════════════════════
+  EJEMPLO COMPLETO
+═══════════════════════════════════════════════════════════════
+
+const videos = [
+  // Video horizontal de YouTube
+  {
+    id: 1,
+    title: 'Reportaje: Crisis Migratoria en la Frontera',
+    description: 'Análisis profundo de la situación migratoria',
+    thumbnail: 'https://i.ytimg.com/vi/ABC123/maxresdefault.jpg',
+    videoUrl: 'https://www.youtube.com/embed/ABC123',
+    category: 'Reportajes',
+    orientation: 'horizontal'
+  },
+  
+  // Video vertical de TikTok
+  {
+    id: 2,
+    title: 'Entrevista Express: Líder Comunitario',
+    description: 'Conversación sobre desarrollo social',
+    thumbnail: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400',
+    videoUrl: 'https://www.tiktok.com/embed/v2/7234567890',
+    category: 'Redes Sociales',
+    orientation: 'vertical'
+  }
+]
+
+═══════════════════════════════════════════════════════════════
+  NOTAS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+✅ NO necesitas base de datos
+✅ Los videos se quedan en YouTube/TikTok/Instagram
+✅ Solo referencias las URLs de embed
+✅ Puedes agregar tantos videos como quieras
+✅ El diseño se adapta automáticamente (responsive)
+
+❌ NO subas videos directamente al proyecto (son muy pesados)
+❌ NO uses URLs normales, usa URLs de EMBED
+
+═══════════════════════════════════════════════════════════════
+  ¿NECESITAS AYUDA?
+═══════════════════════════════════════════════════════════════
+
+Si tienes problemas:
+1. Verifica que la URL sea de EMBED (no la URL normal del video)
+2. Asegúrate de que el video sea público
+3. Revisa que la orientación coincida con el formato del video
+
+═══════════════════════════════════════════════════════════════
