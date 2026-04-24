@@ -17,6 +17,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Cerrar menú al cambiar de ruta
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location])
+
   const navItems = [
     { name: 'Inicio', href: '#hero' },
     { name: 'Sobre mí', href: '#about' },
@@ -47,16 +52,21 @@ const Navbar = () => {
     }
   }
 
+  const toggleMenu = () => {
+    console.log('Toggle menu clicked, current state:', isOpen)
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-white/90 backdrop-blur-sm'
+    <nav className={`fixed w-full z-[100] transition-all duration-300 ${
+      scrolled ? 'bg-white shadow-md' : 'bg-white/90 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-20">
           <a 
             href="#hero" 
             onClick={(e) => handleNavClick(e, '#hero')}
-            className="font-serif text-xl md:text-2xl font-bold"
+            className="font-serif text-xl md:text-2xl font-bold z-10"
           >
             [Tu Nombre]
           </a>
@@ -76,14 +86,14 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors z-10 relative"
             aria-label="Toggle menu"
+            type="button"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+          </button>
         </div>
       </div>
 
@@ -95,7 +105,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t shadow-lg"
+            className="md:hidden bg-white border-t shadow-lg overflow-hidden"
           >
             <div className="px-6 py-4 space-y-3">
               {navItems.map((item, index) => (
@@ -105,8 +115,8 @@ const Navbar = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="block text-base font-medium hover:text-gray-600 transition-colors py-2"
+                  transition={{ delay: index * 0.05 }}
+                  className="block text-base font-medium hover:text-gray-600 hover:bg-gray-50 transition-colors py-3 px-2 rounded"
                 >
                   {item.name}
                 </motion.a>
