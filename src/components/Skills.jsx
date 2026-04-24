@@ -41,11 +41,11 @@ const Skills = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8 text-center">
+          <h2 className="font-serif text-3xl md:text-5xl font-bold mb-6 text-center">
             Habilidades
           </h2>
-          <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-            Combinación de competencias técnicas y habilidades interpersonales para crear contenido de impacto
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Competencias técnicas y habilidades interpersonales
           </p>
 
           <motion.div

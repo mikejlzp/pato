@@ -10,18 +10,26 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-sm uppercase tracking-widest text-gray-500 mb-6">
+          <div className="mb-8">
+            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-200">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" 
+                alt="Foto de perfil"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+            [Tu Nombre]
+          </h1>
+          
+          <p className="text-lg md:text-2xl text-gray-600 mb-6 font-light">
             Periodista & Comunicadora Social
           </p>
           
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-            Contando historias<br />
-            que transforman<br />
-            realidades
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light">
-            Especializada en narrativas que conectan, informan y generan impacto social
+          <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto mb-12">
+            Contando historias que transforman realidades. Especializada en narrativas que conectan, informan y generan impacto social.
           </p>
           
           <motion.a

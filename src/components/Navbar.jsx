@@ -17,7 +17,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Inicio', href: '#hero' },
     { name: 'Sobre mí', href: '#about' },
-    { name: 'Portafolio', href: '#portfolio' },
+    { name: 'Trabajos', href: '#portfolio' },
     { name: 'Habilidades', href: '#skills' },
     { name: 'Contacto', href: '#contact' },
   ]
@@ -28,8 +28,8 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-20">
-          <a href="#hero" className="font-serif text-2xl font-bold">
-            Portafolio
+          <a href="#hero" className="font-serif text-xl md:text-2xl font-bold">
+            [Tu Nombre]
           </a>
 
           {/* Desktop Menu */}
