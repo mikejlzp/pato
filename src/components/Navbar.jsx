@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,13 +26,38 @@ const Navbar = () => {
     { name: 'Contacto', href: '#contact' },
   ]
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    setIsOpen(false)
+    
+    // Si estamos en otra página, navegar a home primero
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => {
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    } else {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-white/90 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-20">
-          <a href="#hero" className="font-serif text-xl md:text-2xl font-bold">
+          <a 
+            href="#hero" 
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="font-serif text-xl md:text-2xl font-bold"
+          >
             [Tu Nombre]
           </a>
 
@@ -39,6 +67,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm font-medium hover:text-gray-600 transition-colors"
               >
                 {item.name}
@@ -47,12 +76,14 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden"
+            whileTap={{ scale: 0.95 }}
+            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -63,18 +94,22 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white border-t shadow-lg"
           >
-            <div className="px-6 py-4 space-y-4">
-              {navItems.map((item) => (
-                <a
+            <div className="px-6 py-4 space-y-3">
+              {navItems.map((item, index) => (
+                <motion.a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm font-medium hover:text-gray-600 transition-colors"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="block text-base font-medium hover:text-gray-600 transition-colors py-2"
                 >
                   {item.name}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
